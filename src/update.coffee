@@ -19,7 +19,7 @@ compareVersion = (l, r) ->
 checkUpdate = (callback) ->
   if callback?
     try
-      packageInfo = require('./package.json')
+      packageInfo = require('../package.json')
     catch e
       util.log e
       return

@@ -9,7 +9,7 @@
 	<key>CFBundleDocumentTypes</key>
 	<array/>
 	<key>CFBundleExecutable</key>
-	<string>node-webkit</string>
+	<string>nwjs</string>
 	<key>CFBundleIconFile</key>
 	<string>shadowsocks.icns</string>
 	<key>CFBundleIdentifier</key>
@@ -42,23 +42,23 @@
 				<string>com.pkware.zip-archive</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>node-webkit App</string>
+			<string>nwjs App</string>
 			<key>UTTypeIconFile</key>
 			<string>nw.icns</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.intel.nw.app</string>
 			<key>UTTypeReferenceURL</key>
-			<string>https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps</string>
+			<string>https://github.com/rogerwang/nwjs/wiki/How-to-package-and-distribute-your-apps</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>com.apple.ostype</key>
-				<string>node-webkit</string>
+				<string>nwjs</string>
 				<key>public.filename-extension</key>
 				<array>
 					<string>nw</string>
 				</array>
 				<key>public.mime-type</key>
-				<string>application/x-node-webkit-app</string>
+				<string>application/x-nwjs-app</string>
 			</dict>
 		</dict>
 	</array>

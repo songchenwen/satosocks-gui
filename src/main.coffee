@@ -18,9 +18,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+$ = window.$
 $ ->
   os = require 'os'
-  gui = require 'nw.gui'
+  gui = window.require 'nw.gui'
   # hack util.log
   
   divWarning = $('#divWarning')
@@ -37,7 +38,7 @@ $ ->
     divWarning.text(s)
   
   args = require './args'
-  local = require 'shadowsocks'
+  local = null
   update = require './update'
   
   update.checkUpdate (url, version) ->
@@ -173,6 +174,7 @@ $ ->
   $('#buttonAbout').on 'click', ->
     gui.Shell.openExternal 'https://github.com/shadowsocks/shadowsocks-gui'
   $("#buttonQr").on 'click', ->
+    console.log 'qr'
     window.qrCode.makeCode(
       qrcode($('#selectMethod').val(),
              $('#inputPassword').val(),
