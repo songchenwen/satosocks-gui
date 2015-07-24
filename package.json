@@ -29,6 +29,8 @@
     }
   ],
   "dependencies": {
-    "coffee-script": "^1.9.3"
+    "coffee-script": "^1.9.3",
+    "mkdirp": "^0.5.1",
+    "request": "^2.60.0"
   }
 }

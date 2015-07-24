@@ -22,6 +22,8 @@ $ = window.$
 $ ->
   os = require 'os'
   gui = window.require 'nw.gui'
+  shadowsocks = require './shadowsocks'
+  localStorage = window.localStorage
   # hack util.log
   
   divWarning = $('#divWarning')
@@ -29,7 +31,7 @@ $ ->
   serverHistory = ->
     (localStorage['server_history'] || '').split('|')
    
-  util = require 'util'
+  util = window.require 'util'
   util.log = (s) ->
     console.log new Date().toLocaleString() + " - #{s}"
     if not divWarningShown
@@ -142,21 +144,20 @@ $ ->
           isRestarting = false
           util.log 'Starting shadowsocks...'
           console.log config
-          window.local = local.createServer config.server, config.server_port, config.local_port, config.password, config.method, 1000 * 600, if config.share then '0.0.0.0' else '127.0.0.1'
+          window.local = shadowsocks.start(config)
           addServer config.server
           $('#divError').fadeOut()
           gui.Window.get().hide()
         catch e
-          util.log e
-      if window.local?
+          console.log e
+      if window.local
         try
           util.log 'Restarting shadowsocks'
-          if window.local.address()
-            window.local.close()
+          window.local.stop()
           setTimeout start, 1000
         catch e
           isRestarting = false
-          util.log e
+          console.log e
       else
         start()
     else
@@ -224,4 +225,8 @@ $ ->
       this.close true
 
   reloadServerList()
-  load true
+  if shadowsocks.available()
+    load true
+  else 
+    shadowsocks.download ->
+      load true
